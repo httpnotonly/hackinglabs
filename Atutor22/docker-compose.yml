@@ -1,0 +1,16 @@
+version: "2"
+services:
+  app:
+    image: httpnotonly/atutor_lab:latest
+    ports:
+      - "80:80"
+    links:
+      - db
+  db:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
